@@ -1,0 +1,37 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id         String    @id @default(cuid())
+  name       String
+  username   String    @unique
+  password   String    @db.TinyText
+  role       Role
+  waliSantri Santri?
+  needToPay  Payment[]
+}
+
+model Santri {
+  id     String @id @default(cuid())
+  name   String
+  wali   User   @relation(fields: [waliId], references: [id], onDelete: Cascade)
+  waliId String @unique
+}
+
+model Payment {
+  id            String @id @default(cuid())
+  name          String
+  price         Int    @default(0)
+  userNeedToPay User[]
+}
+
+enum Role {
+  USER
+  ADMIN
+}

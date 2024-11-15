@@ -1,7 +1,9 @@
 <script lang="ts">
 	import type { PageData } from './$types'
+	import LoginUserForm from './LoginUserForm.svelte'
 
-	export let data: PageData
+	let { data }: { data: PageData } = $props()
 </script>
 
-<pre>{JSON.stringify(data, null, 2)}</pre>
+<LoginUserForm data={data.form} />
+<a href="/register">Register</a>

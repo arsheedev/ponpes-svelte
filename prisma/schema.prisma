@@ -8,30 +8,61 @@ datasource db {
 }
 
 model User {
-  id         String    @id @default(cuid())
-  name       String
-  username   String    @unique
-  password   String    @db.TinyText
-  role       Role      @default(USER)
-  waliSantri Santri?
-  needToPay  Payment[]
+  id              String           @id @default(cuid())
+  name            String
+  username        String           @unique
+  password        String           @db.TinyText
+  role            Role             @default(USER)
+  verified        Boolean          @default(false)
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  waliSantri      Santri?
+  needToPay       Payment[]        @relation(name: "UserNeedToPay")
+  hasPayed        Payment[]        @relation(name: "UserHasPayed")
+  paymentReceipts PaymentReceipt[]
 }
 
 model Santri {
-  id     String @id @default(cuid())
-  name   String
-  wali   User   @relation(fields: [waliId], references: [id], onDelete: Cascade)
-  waliId String @unique
+  id        String   @id @default(cuid())
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  wali      User     @relation(fields: [waliId], references: [id], onDelete: Cascade)
+  waliId    String   @unique
 }
 
 model Payment {
-  id            String @id @default(cuid())
-  name          String
-  price         Int    @default(0)
-  userNeedToPay User[]
+  id              String           @id @default(cuid())
+  name            String
+  price           Int              @default(0)
+  deadline        DateTime
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  userNeedToPay   User[]           @relation(name: "UserNeedToPay")
+  userHasPayed    User[]           @relation(name: "UserHasPayed")
+  paymentReceipts PaymentReceipt[]
+}
+
+model PaymentReceipt {
+  id         String        @id @default(cuid())
+  status     PaymentStatus @default(DIPROSES)
+  acceptedAt DateTime
+  createdAt  DateTime      @default(now())
+  updatedAt  DateTime      @updatedAt
+  User       User?         @relation(fields: [userId], references: [id])
+  userId     String?
+  Payment    Payment?      @relation(fields: [paymentId], references: [id])
+  paymentId  String?
 }
 
 enum Role {
   USER
   ADMIN
+}
+
+enum PaymentStatus {
+  DIPROSES
+  DIBAYAR
+  GAGAL
+  DIBATALKAN
 }

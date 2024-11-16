@@ -61,14 +61,14 @@ export const actions: Actions = {
 		const authToken = await jwt.sign(
 			{ id: userExist.id, username: userExist.username, role: userExist.role },
 			SECRET_JWT_TOKEN,
-			{ expiresIn: '30s' }
+			{ expiresIn: '24h' }
 		)
 
 		event.cookies.set('authToken', authToken, {
 			path: '/',
 			httpOnly: true,
 			sameSite: true,
-			maxAge: 30
+			maxAge: 60 * 60 * 24
 		})
 
 		if (userExist.role === 'ADMIN') {

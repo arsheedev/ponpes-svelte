@@ -1,17 +1,17 @@
 <script lang="ts">
-	import * as Avatar from "$lib/components/ui/avatar/index.js";
-	import * as DropdownMenu from "$lib/components/ui/dropdown-menu/index.js";
-	import * as Sidebar from "$lib/components/ui/sidebar/index.js";
-	import { useSidebar } from "$lib/components/ui/sidebar/index.js";
-	import BadgeCheck from "lucide-svelte/icons/badge-check";
-	import Bell from "lucide-svelte/icons/bell";
-	import ChevronsUpDown from "lucide-svelte/icons/chevrons-up-down";
-	import CreditCard from "lucide-svelte/icons/credit-card";
-	import LogOut from "lucide-svelte/icons/log-out";
-	import Sparkles from "lucide-svelte/icons/sparkles";
+	import * as Avatar from '$lib/components/ui/avatar/index.js'
+	import * as DropdownMenu from '$lib/components/ui/dropdown-menu/index.js'
+	import * as Sidebar from '$lib/components/ui/sidebar/index.js'
+	import { useSidebar } from '$lib/components/ui/sidebar/index.js'
+	import BadgeCheck from 'lucide-svelte/icons/badge-check'
+	import Bell from 'lucide-svelte/icons/bell'
+	import ChevronsUpDown from 'lucide-svelte/icons/chevrons-up-down'
+	import CreditCard from 'lucide-svelte/icons/credit-card'
+	import LogOut from 'lucide-svelte/icons/log-out'
+	import Sparkles from 'lucide-svelte/icons/sparkles'
 
-	let { user }: { user: { name: string; email: string; avatar: string } } = $props();
-	const sidebar = useSidebar();
+	let { user }: { user: { name: string; username: string; avatar: string } } = $props()
+	const sidebar = useSidebar()
 </script>
 
 <Sidebar.Menu>
@@ -30,7 +30,7 @@
 						</Avatar.Root>
 						<div class="grid flex-1 text-left text-sm leading-tight">
 							<span class="truncate font-semibold">{user.name}</span>
-							<span class="truncate text-xs">{user.email}</span>
+							<span class="truncate text-xs">{user.username}</span>
 						</div>
 						<ChevronsUpDown class="ml-auto size-4" />
 					</Sidebar.MenuButton>
@@ -38,7 +38,7 @@
 			</DropdownMenu.Trigger>
 			<DropdownMenu.Content
 				class="w-[--bits-dropdown-menu-anchor-width] min-w-56 rounded-lg"
-				side={sidebar.isMobile ? "bottom" : "right"}
+				side={sidebar.isMobile ? 'bottom' : 'right'}
 				align="end"
 				sideOffset={4}
 			>
@@ -50,7 +50,7 @@
 						</Avatar.Root>
 						<div class="grid flex-1 text-left text-sm leading-tight">
 							<span class="truncate font-semibold">{user.name}</span>
-							<span class="truncate text-xs">{user.email}</span>
+							<span class="truncate text-xs">{user.username}</span>
 						</div>
 					</div>
 				</DropdownMenu.Label>

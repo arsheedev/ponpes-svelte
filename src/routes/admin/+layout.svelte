@@ -3,12 +3,20 @@
 	import * as Breadcrumb from '$lib/components/ui/breadcrumb'
 	import { Separator } from '$lib/components/ui/separator'
 	import * as Sidebar from '$lib/components/ui/sidebar'
+	import type { Snippet } from 'svelte'
+	import type { PageData } from './$types'
 
-	let { children } = $props()
+	let { data, children }: { data: PageData; children: Snippet } = $props()
+
+	const user = {
+		name: data.session.username,
+		username: data.session.username,
+		avatar: '/favicon.png'
+	}
 </script>
 
 <Sidebar.Provider>
-	<AppSidebar />
+	<AppSidebar {user} />
 	<Sidebar.Inset>
 		<header
 			class="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12"

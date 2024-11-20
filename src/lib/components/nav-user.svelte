@@ -3,12 +3,8 @@
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu/index.js'
 	import * as Sidebar from '$lib/components/ui/sidebar/index.js'
 	import { useSidebar } from '$lib/components/ui/sidebar/index.js'
-	import BadgeCheck from 'lucide-svelte/icons/badge-check'
-	import Bell from 'lucide-svelte/icons/bell'
 	import ChevronsUpDown from 'lucide-svelte/icons/chevrons-up-down'
-	import CreditCard from 'lucide-svelte/icons/credit-card'
 	import LogOut from 'lucide-svelte/icons/log-out'
-	import Sparkles from 'lucide-svelte/icons/sparkles'
 
 	let { user }: { user: { name: string; username: string; avatar: string } } = $props()
 	const sidebar = useSidebar()
@@ -55,32 +51,12 @@
 					</div>
 				</DropdownMenu.Label>
 				<DropdownMenu.Separator />
-				<DropdownMenu.Group>
+				<a href="/logout">
 					<DropdownMenu.Item>
-						<Sparkles />
-						Upgrade to Pro
+						<LogOut />
+						Log out
 					</DropdownMenu.Item>
-				</DropdownMenu.Group>
-				<DropdownMenu.Separator />
-				<DropdownMenu.Group>
-					<DropdownMenu.Item>
-						<BadgeCheck />
-						Account
-					</DropdownMenu.Item>
-					<DropdownMenu.Item>
-						<CreditCard />
-						Billing
-					</DropdownMenu.Item>
-					<DropdownMenu.Item>
-						<Bell />
-						Notifications
-					</DropdownMenu.Item>
-				</DropdownMenu.Group>
-				<DropdownMenu.Separator />
-				<DropdownMenu.Item>
-					<LogOut />
-					Log out
-				</DropdownMenu.Item>
+				</a>
 			</DropdownMenu.Content>
 		</DropdownMenu.Root>
 	</Sidebar.MenuItem>

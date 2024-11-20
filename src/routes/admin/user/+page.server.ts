@@ -2,7 +2,18 @@ import db from '$lib/server/db'
 import { fail, type Actions } from '@sveltejs/kit'
 import type { PageServerLoad } from './$types'
 
-export const load: PageServerLoad = async () => {
+export const load: PageServerLoad = async ({ url }) => {
+	const isUserVerified = url.searchParams.get('verified')
+
+	if (isUserVerified) {
+		const users = await db.user.findMany({
+			where: { NOT: { role: 'ADMIN' }, verified: false },
+			include: { waliSantri: true }
+		})
+
+		return { users }
+	}
+
 	const users = await db.user.findMany({
 		where: { NOT: { role: 'ADMIN' } },
 		include: { waliSantri: true }

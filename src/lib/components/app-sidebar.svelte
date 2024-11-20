@@ -3,7 +3,7 @@
 	import NavUser from '$lib/components/nav-user.svelte'
 	import TeamSwitcher from '$lib/components/team-switcher.svelte'
 	import * as Sidebar from '$lib/components/ui/sidebar/index.js'
-	import { adminNavMenu } from '$lib/data/navbar'
+	import { type AdminNavMenutype } from '$lib/data/navbar'
 	import type { ComponentProps } from 'svelte'
 
 	interface UserInterface {
@@ -16,8 +16,12 @@
 		ref = $bindable(null),
 		collapsible = 'icon',
 		user,
+		navMenu,
 		...restProps
-	}: ComponentProps<typeof Sidebar.Root> & { user: UserInterface } = $props()
+	}: ComponentProps<typeof Sidebar.Root> & {
+		user: UserInterface
+		navMenu: AdminNavMenutype
+	} = $props()
 </script>
 
 <Sidebar.Root bind:ref {collapsible} {...restProps}>
@@ -25,7 +29,7 @@
 		<TeamSwitcher />
 	</Sidebar.Header>
 	<Sidebar.Content>
-		<NavMain items={adminNavMenu} />
+		<NavMain items={navMenu} />
 	</Sidebar.Content>
 	<Sidebar.Footer>
 		<NavUser {user} />

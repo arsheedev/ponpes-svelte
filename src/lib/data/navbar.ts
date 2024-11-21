@@ -57,3 +57,26 @@ export const adminNavMenu: AdminNavMenutype = [
 		]
 	}
 ]
+
+export const userNavMenu: AdminNavMenutype = [
+	{
+		title: 'Pembayaran',
+		url: '/dashboard/pembayaran',
+		icon: SquareTerminal,
+		isActive: true,
+		items: [
+			{
+				title: 'Belum Dibayar',
+				url: '/dashboard/pembayaran/perlu-dibayar'
+			},
+			{
+				title: 'Sudah Dibayar',
+				url: '/dashboard/pembayaran/sudah-dibayar'
+			},
+			{
+				title: 'Histori Pembayaran',
+				url: '/dashboard/pembayaran/histori-pembayaran'
+			}
+		]
+	}
+]

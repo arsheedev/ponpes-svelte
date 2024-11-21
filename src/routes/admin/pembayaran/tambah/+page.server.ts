@@ -20,7 +20,10 @@ export const actions: Actions = {
 		const { name, price, deadline } = form.data
 
 		try {
-			await db.payment.create({ data: { name, price, deadline: new Date(deadline) } })
+			const users = await db.user.findMany({ where: { NOT: { role: 'ADMIN' } } })
+			await db.payment.create({
+				data: { name, price, deadline: new Date(deadline), userNeedToPay: { connect: users } }
+			})
 		} catch {
 			return fail(400, { form, message: 'Gagal membuat pembayaran!' })
 		}

@@ -18,7 +18,6 @@ export const adminNavMenu: AdminNavMenutype = [
 		title: 'User',
 		url: '/admin/user',
 		icon: SquareTerminal,
-		isActive: true,
 		items: [
 			{
 				title: 'Semua User',
@@ -43,16 +42,16 @@ export const adminNavMenu: AdminNavMenutype = [
 	},
 	{
 		title: 'Pembayaran User',
-		url: '#',
+		url: '/admin/pembayaran-user',
 		icon: BookOpen,
 		items: [
 			{
 				title: 'Histori Pembayaran',
-				url: '#'
+				url: '/admin/pembayaran-user'
 			},
 			{
 				title: 'Perlu Verifikasi',
-				url: '#'
+				url: '/admin/pembayaran-user?verified=false'
 			}
 		]
 	}
@@ -63,7 +62,6 @@ export const userNavMenu: AdminNavMenutype = [
 		title: 'Pembayaran',
 		url: '/dashboard/pembayaran',
 		icon: SquareTerminal,
-		isActive: true,
 		items: [
 			{
 				title: 'Belum Dibayar',

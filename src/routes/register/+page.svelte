@@ -1,8 +1,10 @@
 <script lang="ts">
+	import RegisterForm from '$lib/components/register-form.svelte'
 	import type { PageData } from './$types'
-	import RegisterUserForm from './RegisterUserForm.svelte'
 
 	let { data }: { data: PageData } = $props()
 </script>
 
-<RegisterUserForm data={data.form} />
+<div class="flex h-screen w-full items-center justify-center px-4">
+	<RegisterForm data={data.form} />
+</div>

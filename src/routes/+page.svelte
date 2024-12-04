@@ -1,9 +1,9 @@
 <script lang="ts">
+	import LoginForm from '$lib/components/login-form.svelte'
 	import type { PageData } from './$types'
-	import LoginUserForm from './LoginUserForm.svelte'
-
 	let { data }: { data: PageData } = $props()
 </script>
 
-<LoginUserForm data={data.form} />
-<a href="/register">Register</a>
+<div class="flex h-screen w-full items-center justify-center px-4">
+	<LoginForm data={data.form} />
+</div>

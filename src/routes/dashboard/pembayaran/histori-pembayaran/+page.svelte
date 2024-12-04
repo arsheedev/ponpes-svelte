@@ -14,13 +14,12 @@
 			<Table.Head>Status</Table.Head>
 			<Table.Head>Diterima</Table.Head>
 			<Table.Head>Dibuat</Table.Head>
-			<Table.Head>Detail</Table.Head>
 		</Table.Row>
 	</Table.Header>
 	<Table.Body>
-		<Table.Row>
-			{#if data.payments}
-				{#each data.payments as payment}
+		{#if data.payments}
+			{#each data.payments as payment}
+				<Table.Row>
 					<Table.Cell>{payment.id}</Table.Cell>
 					<Table.Cell
 						class={cn('text-yellow-400', {
@@ -37,11 +36,8 @@
 						{/if}
 					</Table.Cell>
 					<Table.Cell>{formatDate.format(payment.createdAt)}</Table.Cell>
-					<Table.Cell>
-						<a href="/admin/pembayaran-user/detail?id={payment.id}">Detail</a>
-					</Table.Cell>
-				{/each}
-			{/if}
-		</Table.Row>
+				</Table.Row>
+			{/each}
+		{/if}
 	</Table.Body>
 </Table.Root>

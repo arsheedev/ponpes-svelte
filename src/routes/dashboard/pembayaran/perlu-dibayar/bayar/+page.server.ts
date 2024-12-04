@@ -25,6 +25,10 @@ export const actions: Actions = {
 			return fail(404, { error: 'Pembayaran tidak ditemukan!' })
 		}
 
+		if (existingPayment.deadline < new Date(Date.now())) {
+			return fail(400, { error: 'Pembayaran sudah kadaluarsa!' })
+		}
+
 		const file = formData.get('file') as File | undefined
 
 		if (!(file instanceof File)) {

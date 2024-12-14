@@ -24,7 +24,7 @@
 			}
 
 			if (result.type === 'redirect') {
-				return toast.success('Berhasil login!')
+				return toast.success('Silahkan hubungi admin untuk memverifikasi akun!')
 			}
 		},
 		onError() {
@@ -90,7 +90,7 @@
 								<div class="flex items-center">
 									<Form.Label>Masukan Ulang Password</Form.Label>
 								</div>
-								<Input {...props} type="password" bind:value={$formData.password} />
+								<Input {...props} type="password" bind:value={$formData.confirmPassword} />
 							</div>
 						{/snippet}
 					</Form.Control>

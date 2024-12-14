@@ -19,8 +19,8 @@
 		</Table.Row>
 	</Table.Header>
 	<Table.Body>
-		<Table.Row>
-			{#each data.payments as payment}
+		{#each data.payments as payment}
+			<Table.Row>
 				<Table.Cell>{payment.id}</Table.Cell>
 				<Table.Cell>{payment.User?.name}</Table.Cell>
 				<Table.Cell
@@ -41,7 +41,7 @@
 				<Table.Cell>
 					<a href="/admin/pembayaran-user/detail?id={payment.id}">Detail</a>
 				</Table.Cell>
-			{/each}
-		</Table.Row>
+			</Table.Row>
+		{/each}
 	</Table.Body>
 </Table.Root>

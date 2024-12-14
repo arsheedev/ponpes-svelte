@@ -10,4 +10,6 @@
 	}
 </script>
 
-<EditPembayaranForm data={data.form} />
+<div class="flex w-full justify-center">
+	<EditPembayaranForm data={data.form} />
+</div>

@@ -21,8 +21,8 @@
 		</Table.Row>
 	</Table.Header>
 	<Table.Body>
-		<Table.Row>
-			{#each data.users as user}
+		{#each data.users as user}
+			<Table.Row>
 				<Table.Cell>{user.id}</Table.Cell>
 				<Table.Cell>{user.name}</Table.Cell>
 				<Table.Cell>{user.waliSantri?.name}</Table.Cell>
@@ -44,7 +44,7 @@
 						<button>Hapus</button>
 					</form>
 				</Table.Cell>
-			{/each}
-		</Table.Row>
+			</Table.Row>
+		{/each}
 	</Table.Body>
 </Table.Root>

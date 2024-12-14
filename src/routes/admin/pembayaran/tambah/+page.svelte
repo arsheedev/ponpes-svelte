@@ -5,4 +5,6 @@
 	let { data }: { data: PageData } = $props()
 </script>
 
-<TambahPembayaranForm data={data.form} />
+<div class="flex w-full justify-center">
+	<TambahPembayaranForm data={data.form} />
+</div>

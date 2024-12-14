@@ -35,16 +35,18 @@
 	}
 </script>
 
-<form method="POST" enctype="multipart/form-data" use:enhance={uploadImage}>
-	<Label for="file">Upload bukti pembayaran</Label>
-	<Input
-		name="file"
-		id="file"
-		type="file"
-		aria-label="upload images"
-		accept="image/*"
-		disabled={loading}
-	/>
-	<a href="/dashboard/pembayaran/perlu-dibayar">Cancel</a>
-	<Button type="submit" disabled={loading}>Submit</Button>
-</form>
+<div class="flex w-full justify-center">
+	<form method="POST" class="w-[600px]" enctype="multipart/form-data" use:enhance={uploadImage}>
+		<Label for="file">Upload bukti pembayaran</Label>
+		<Input
+			name="file"
+			id="file"
+			type="file"
+			aria-label="upload images"
+			accept="image/*"
+			disabled={loading}
+		/>
+		<a href="/dashboard/pembayaran/perlu-dibayar">Cancel</a>
+		<Button type="submit" disabled={loading}>Submit</Button>
+	</form>
+</div>

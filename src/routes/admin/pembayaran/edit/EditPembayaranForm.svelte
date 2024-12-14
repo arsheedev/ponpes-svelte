@@ -60,7 +60,7 @@
 	let placeholder = $state<DateValue>(today(getLocalTimeZone()))
 </script>
 
-<form method="POST" use:enhance>
+<form method="POST" class="w-[600px]" use:enhance>
 	<Form.Field {form} name="name">
 		<Form.Control>
 			{#snippet children({ props })}

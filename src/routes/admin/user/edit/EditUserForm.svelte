@@ -36,7 +36,7 @@
 	const { form: formData, enhance } = form
 </script>
 
-<form method="POST" use:enhance>
+<form method="POST" class="w-[600px]" use:enhance>
 	<Form.Field {form} name="name">
 		<Form.Control>
 			{#snippet children({ props })}

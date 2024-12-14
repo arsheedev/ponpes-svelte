@@ -13,4 +13,6 @@
 	}
 </script>
 
-<EditUserForm data={data.form} />
+<div class="flex w-full justify-center">
+	<EditUserForm data={data.form} />
+</div>

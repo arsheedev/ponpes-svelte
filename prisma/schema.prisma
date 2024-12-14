@@ -3,7 +3,7 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
@@ -11,7 +11,7 @@ model User {
   id              String           @id @default(cuid())
   name            String
   username        String           @unique
-  password        String           @db.TinyText
+  password        String           @db.Text
   role            Role             @default(USER)
   verified        Boolean          @default(false)
   createdAt       DateTime         @default(now())
@@ -45,7 +45,7 @@ model Payment {
 
 model PaymentReceipt {
   id         String        @id @default(cuid())
-  imageUrl   String        @db.TinyText
+  imageUrl   String        @db.Text
   status     PaymentStatus @default(DIPROSES)
   acceptedAt DateTime?
   createdAt  DateTime      @default(now())
